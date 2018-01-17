@@ -13,14 +13,26 @@ def crear_personaje():
     t = (n,v,s,h)
     print 'Nombre: '+str(t[0])+ '\n'+'Vida: '+str(t[1])+'\n'+'Mana: '+str(t[2])+'\n'+'Estabilidad mental: '+str(t[3])
     Personajes.write('Nombre: '+str(t[0])+ '\n'+'Vida: '+str(t[1])+'\n'+'Mana: '+str(t[2])+'\n'+'Estabilidad mental: '+str(t[3])+'\n'+'--------------------------------------------------'+'\n')
+    Personajes.close()
     return t
 while True:
-    print 'Crear personaje: 1 \n otros: 2'
-    xd= int(raw_input('ingrese opcion:'))
+    print '|-------------------------------------------------|\n|Crear personaje: 1 \n|Ver personajes: 2\n|Deletea tus personajes: 3\n|Acabar con mi vida: 4\n|-------------------------------------------------|'
+    xd= int(raw_input(' Ingrese opcion:'))
     if xd== 1:
         crear_personaje()
-    
-    else:
+    if xd==2:
+        xdd=open('personajes.txt','r')
+        for linea in xdd:
+            print linea
+    if xd==3:
+        print '¿Estas seguro?'
+        nya=str(raw_input())
+        if nya=='si':
+            deletiao=open('personajes.txt','w')
+            deletiao.close()
+        if nya=='no':
+            print ':('
+    if xd==4:
         Personajes.close()
         break
 
