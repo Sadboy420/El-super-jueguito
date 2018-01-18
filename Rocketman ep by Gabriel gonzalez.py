@@ -1,20 +1,31 @@
-#Hecho por Gabriel Gonzalez
-#Contacto: xD
 from random import choice
-Personajes=open('personajes.txt','a')
 def crear_personaje():
-    n = raw_input("Ingrese nombre del personaje:")
-    v = 10
-    v+= choice(range(11))
-    s = 15
-    s+= choice(range(16))
-    h = 5
-    h+= choice(range(6))
-    t = (n,v,s,h)
-    print 'Nombre: '+str(t[0])+ '\n'+'Vida: '+str(t[1])+'\n'+'Mana: '+str(t[2])+'\n'+'Estabilidad mental: '+str(t[3])
-    Personajes.write('Nombre: '+str(t[0])+ '\n'+'Vida: '+str(t[1])+'\n'+'Mana: '+str(t[2])+'\n'+'Estabilidad mental: '+str(t[3])+'\n'+'--------------------------------------------------'+'\n')
+    Personajes=open('personajes.txt','a')
+    nombre = raw_input("Ingrese nombre del personaje:")
+    stats=dict()
+    gen=dict()
+    raza=raw_input('ingrese raza del personaje:')
+    vida= choice(range(200))
+    fuerza=choice(range(1,11))
+    percepcion=choice(range(1,11))
+    resistencia=choice(range(1,11))
+    carisma=choice(range(1,11))
+    inteligencia=choice(range(1,11))
+    agilidad=choice(range(1,11))
+    suerte=choice(range(1,11))
+    stats['vida']=vida
+    stats['fuerza']=fuerza
+    stats['percepcion']=percepcion
+    stats['resistencia']=resistencia
+    stats['carisma']=carisma
+    stats['inteligencia']=inteligencia
+    stats['agilidad']=agilidad
+    stats['suerte']=suerte
+    stats2=[raza,stats]
+    gen[nombre]=stats2
+    Personajes.write(str(gen)+'\n')
     Personajes.close()
-    return t
+    return Personajes
 while True:
     print '|-------------------------------------------------|\n|Crear personaje: 1 \n|Ver personajes: 2\n|Deletea tus personajes: 3\n|Acabar con mi vida: 4\n|-------------------------------------------------|'
     xd= int(raw_input(' Ingrese opcion:'))
@@ -33,7 +44,7 @@ while True:
         if nya=='no':
             print ':('
     if xd==4:
-        Personajes.close()
         break
-
+#Hecho por Gabriel Gonzalez
+#Contacto: xD
         
