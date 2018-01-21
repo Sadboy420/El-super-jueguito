@@ -4,6 +4,8 @@ from Tkinter import *
 def crear_personaje(x):
     Personajes=open(x+'_personajes.txt','a')
     nombre = raw_input("Ingrese nombre del personaje:")
+    invent=open('Inventario_'+nombre+'.txt','r')
+    invent.close()
     stats=dict()
     gen=dict()
     raza=raw_input('ingrese raza del personaje:')
@@ -27,12 +29,23 @@ def crear_personaje(x):
     gen[nombre]=stats2
     Personajes.write(str(gen)+'\n')
     Personajes.close()
-    return Personajes
+    return Personajes,nombre
 
 def crear_item():
+    var=raw_input('ingrese nombre el personaje:')
+    nig=open('Inventario_'+var+'.txt','a')
+    item=raw_input('ingrese nombre del item a crear:')
+    
+    
     return
 
-def inv_pers(uni):
+def ver_inv_pers():
+    var=raw_input('ingrese nombre el personaje:')
+    nig=open('Inventario_'+var+'.txt','r')
+    for linea in nig:
+        print linea
+    nig.close()
+    return
 
 def historia(x):
     while True:
@@ -53,25 +66,29 @@ def historia(x):
 #v0.mainloop()
 uni=raw_input('ingrese nombre del universo: ')
 while True:
-    print '|-------------------------------------------------|\n|Crear personaje: 1 \n|Iniciar/Resumir historia:2 \n|Ver personajes: 3\n|Deletea tus personajes: 4\n|Acabar con mi vida: 5\n|-------------------------------------------------|'
+    print '|-------------------------------------------------|\n|Crear personaje: 1 \n|Iniciar/Resumir historia:2 \n|Ver inventario de un personaje: 3\n|Dar item a un personaje: 4\n|Ver personajes: 5\n|Deletea tus personajes: 6\n|Acabar con mi vida: 7\n|-------------------------------------------------|'
     xd= int(raw_input(' Ingrese opcion:'))
     if xd== 1:
         crear_personaje(uni)
-    if xd==3:
+    if xd==5:
         xdd=open(uni+'_personajes.txt','r')
         for linea in xdd:
             print linea
     if xd==2:
-        #historia(uni)
+        historia(uni)
+    if xd==3:
+        ver_inv_pers()
     if xd==4:
+        crear_item()
+    if xd==6:
         print '¿Estas seguro?'
         nya=str(raw_input())
         if nya=='si':
              deletiao=open(uni+'.txt','w')
-            deletiao.close()
+             deletiao.close()
         if nya=='no':
-            #print ':('
-    if xd==5:
+            print ':('
+    if xd==7:
        break
 #Hecho por Gabriel Gonzalez
 #Contacto: xD
