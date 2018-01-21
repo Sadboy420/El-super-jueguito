@@ -4,7 +4,7 @@ from Tkinter import *
 def crear_personaje(x):
     Personajes=open(x+'_personajes.txt','a')
     nombre = raw_input("Ingrese nombre del personaje:")
-    invent=open('Inventario_'+nombre+'.txt','r')
+    invent=open('Inventario_'+nombre+'.txt','a')
     invent.close()
     stats=dict()
     gen=dict()
@@ -32,11 +32,16 @@ def crear_personaje(x):
     return Personajes,nombre
 
 def crear_item():
+    lis=list()
     var=raw_input('ingrese nombre el personaje:')
     nig=open('Inventario_'+var+'.txt','a')
     item=raw_input('ingrese nombre del item a crear:')
-    
-    
+    typ=raw_input('ingrese tipo del item:')
+    prop=raw_input('ingrese propiedades en orden:')
+    lis.append(item)
+    lis.append(typ)
+    lis.append(prop)
+    nig.write(str(lis)+'\n')
     return
 
 def ver_inv_pers():
@@ -58,12 +63,7 @@ def historia(x):
             h.write(text+'\n')
     return h
 
-#v0=Tk()
-#v0.config(bg='red')
-#v0.geometry('500x500')
-#b1=Button(v0,text="ir a los dados",command=dado())
-#v1=Toplevel(v0)
-#v0.mainloop()
+
 uni=raw_input('ingrese nombre del universo: ')
 while True:
     print '|-------------------------------------------------|\n|Crear personaje: 1 \n|Iniciar/Resumir historia:2 \n|Ver inventario de un personaje: 3\n|Dar item a un personaje: 4\n|Ver personajes: 5\n|Deletea tus personajes: 6\n|Acabar con mi vida: 7\n|-------------------------------------------------|'
