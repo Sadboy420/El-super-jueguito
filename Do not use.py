@@ -81,7 +81,7 @@ while True:
     if xd==4:
         crear_item()
     if xd==6:
-        print '¿Estas seguro?'
+        print 'Â¿Estas seguro?'
         nya=str(raw_input())
         if nya=='si':
              deletiao=open(uni+'.txt','w')
